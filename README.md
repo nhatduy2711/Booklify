@@ -8,8 +8,8 @@ A full-stack **book store management application** built using the MERN stack (M
 
 ## 🚀 Live Demo
 
-- **Deploy**: **[https://booklify-duyln-dev.vercel.app/](https://booklify-duyln-dev.vercel.app/)**
-- **GitHub Repository**: **[https://github.com/duyln-dev/Booklify](https://github.com/duyln-dev/Booklify)**
+- **Deploy**: **[https://booklify-react-duylndev.vercel.app//](https://booklify-react-duylndev.vercel.app/)**
+- **GitHub Repository**: **[https://github.com/nhatduy2711/Booklify.git](https://github.com/nhatduy2711/Booklify.git)**
 
 ---
 

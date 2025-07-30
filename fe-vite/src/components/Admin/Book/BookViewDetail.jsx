@@ -1,14 +1,29 @@
 import { Drawer, Badge, Descriptions, Image } from "antd";
 import moment from "moment";
 import { FORMAT_DATE_DISPLAY } from "../../../utils/constant";
+import { useEffect, useState } from "react";
 
 const BookViewDetail = (props) => {
+  const [drawerWidth, setDrawerWidth] = useState("50vw");
+
   const {
     openViewDetail,
     setOpenViewDetail,
     dataViewDetail,
     setDataViewDetail,
   } = props;
+
+  useEffect(() => {
+    const handleResize = () => {
+      const isMobile = window.innerWidth < 1300;
+      setDrawerWidth(isMobile ? "100vw" : "50vw");
+    };
+
+    handleResize(); // Gọi lần đầu
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const onClose = () => {
     setOpenViewDetail(false);
@@ -20,11 +35,11 @@ const BookViewDetail = (props) => {
   return (
     <Drawer
       title="Chi tiết sách"
-      width={"50vw"}
+      width={drawerWidth}
       onClose={onClose}
       open={openViewDetail}
     >
-      <Descriptions title="Thông tin sách" bordered column={2}>
+      <Descriptions title="Thông tin sách" bordered column={1}>
         <Descriptions.Item label="ID">{dataViewDetail?._id}</Descriptions.Item>
         <Descriptions.Item label="Tên sách">
           {dataViewDetail?.mainText}

@@ -93,8 +93,8 @@ const ToggleThemeButton = ({ darkTheme, toggleTheme }) => {
 };
 
 const LayoutAdmin = () => {
-  const [darkTheme, setDarkTheme] = useState(true);
-  const [collapsed, setCollapsed] = useState(false);
+  const [darkTheme, setDarkTheme] = useState(false);
+  const [collapsed, setCollapsed] = useState(true);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
