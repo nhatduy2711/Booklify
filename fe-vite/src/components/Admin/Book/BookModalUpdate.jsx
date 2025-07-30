@@ -42,6 +42,19 @@ const BookModalUpdate = (props) => {
 
   const [initForm, setInitForm] = useState(null);
 
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 1000);
+    };
+
+    handleResize(); // gọi 1 lần khi mount
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   useEffect(() => {
     const fetchCategory = async () => {
       const res = await callFetchCategory();
@@ -254,11 +267,12 @@ const BookModalUpdate = (props) => {
           setDataUpdate(null);
           setOpenModalUpdate(false);
         }}
-        okText={"Cập nhật"}
-        cancelText={"Hủy"}
+        okText="Cập nhật"
+        cancelText="Hủy"
         confirmLoading={isSubmit}
-        width={"50vw"}
-        //do not close when click outside
+        width={isMobile ? "100vw" : "50vw"}
+        style={isMobile ? { top: 0, paddingBottom: 0 } : {}}
+        bodyStyle={isMobile ? { padding: "16px" } : {}}
         maskClosable={false}
       >
         <Divider />
@@ -276,7 +290,7 @@ const BookModalUpdate = (props) => {
               </Form.Item>
             </Col>
 
-            <Col span={12}>
+            <Col span={12} xs={24}>
               <Form.Item
                 labelCol={{ span: 24 }}
                 label="Tên sách"
@@ -288,7 +302,8 @@ const BookModalUpdate = (props) => {
                 <Input />
               </Form.Item>
             </Col>
-            <Col span={12}>
+
+            <Col span={12} xs={24}>
               <Form.Item
                 labelCol={{ span: 24 }}
                 label="Tác giả"
@@ -298,7 +313,8 @@ const BookModalUpdate = (props) => {
                 <Input />
               </Form.Item>
             </Col>
-            <Col span={6}>
+
+            <Col span={6} xs={24}>
               <Form.Item
                 labelCol={{ span: 24 }}
                 label="Giá tiền"
@@ -315,7 +331,8 @@ const BookModalUpdate = (props) => {
                 />
               </Form.Item>
             </Col>
-            <Col span={6}>
+
+            <Col span={6} xs={24}>
               <Form.Item
                 labelCol={{ span: 24 }}
                 label="Thể loại"
@@ -326,12 +343,12 @@ const BookModalUpdate = (props) => {
                   defaultValue={null}
                   showSearch
                   allowClear
-                  //  onChange={handleChange}
                   options={listCategory}
                 />
               </Form.Item>
             </Col>
-            <Col span={6}>
+
+            <Col span={6} xs={24}>
               <Form.Item
                 labelCol={{ span: 24 }}
                 label="Số lượng"
@@ -341,7 +358,8 @@ const BookModalUpdate = (props) => {
                 <InputNumber min={1} style={{ width: "100%" }} />
               </Form.Item>
             </Col>
-            <Col span={6}>
+
+            <Col span={6} xs={24}>
               <Form.Item
                 labelCol={{ span: 24 }}
                 label="Đã bán"
@@ -353,7 +371,8 @@ const BookModalUpdate = (props) => {
                 <InputNumber min={0} disabled style={{ width: "100%" }} />
               </Form.Item>
             </Col>
-            <Col span={12}>
+
+            <Col span={12} xs={24}>
               <Form.Item
                 labelCol={{ span: 24 }}
                 label="Ảnh Thumbnail"
@@ -379,7 +398,8 @@ const BookModalUpdate = (props) => {
                 </Upload>
               </Form.Item>
             </Col>
-            <Col span={12}>
+
+            <Col span={12} xs={24}>
               <Form.Item
                 labelCol={{ span: 24 }}
                 label="Ảnh Slider"
