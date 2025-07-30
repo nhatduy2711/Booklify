@@ -37,6 +37,19 @@ const BookModalCreate = (props) => {
   const [previewImage, setPreviewImage] = useState("");
   const [previewTitle, setPreviewTitle] = useState("");
 
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 1000);
+    };
+
+    handleResize(); // gọi 1 lần khi mount
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   useEffect(() => {
     const fetchCategory = async () => {
       const res = await callFetchCategory();
@@ -197,15 +210,16 @@ const BookModalCreate = (props) => {
         okText={"Tạo mới"}
         cancelText={"Hủy"}
         confirmLoading={isSubmit}
-        width={"50vw"}
-        //do not close when click fetchBook
+        width={isMobile ? "100vw" : "50vw"}
+        style={isMobile ? { top: 0, paddingBottom: 0 } : {}}
+        bodyStyle={isMobile ? { height: "100vh", overflowY: "auto" } : {}}
         maskClosable={false}
       >
         <Divider />
 
         <Form form={form} name="basic" onFinish={onFinish} autoComplete="off">
           <Row gutter={15}>
-            <Col span={12}>
+            <Col xs={24} md={12}>
               <Form.Item
                 labelCol={{ span: 24 }}
                 label="Tên sách"
@@ -217,7 +231,7 @@ const BookModalCreate = (props) => {
                 <Input />
               </Form.Item>
             </Col>
-            <Col span={12}>
+            <Col xs={24} md={12}>
               <Form.Item
                 labelCol={{ span: 24 }}
                 label="Tác giả"
@@ -227,7 +241,7 @@ const BookModalCreate = (props) => {
                 <Input />
               </Form.Item>
             </Col>
-            <Col span={6}>
+            <Col xs={24} md={6}>
               <Form.Item
                 labelCol={{ span: 24 }}
                 label="Giá tiền"
@@ -244,7 +258,7 @@ const BookModalCreate = (props) => {
                 />
               </Form.Item>
             </Col>
-            <Col span={6}>
+            <Col xs={24} md={6}>
               <Form.Item
                 labelCol={{ span: 24 }}
                 label="Thể loại"
@@ -260,7 +274,7 @@ const BookModalCreate = (props) => {
                 />
               </Form.Item>
             </Col>
-            <Col span={6}>
+            <Col xs={24} md={6}>
               <Form.Item
                 labelCol={{ span: 24 }}
                 label="Số lượng"
@@ -270,7 +284,7 @@ const BookModalCreate = (props) => {
                 <InputNumber min={1} style={{ width: "100%" }} />
               </Form.Item>
             </Col>
-            <Col span={6}>
+            <Col xs={24} md={6}>
               <Form.Item
                 labelCol={{ span: 24 }}
                 label="Đã bán"
@@ -287,7 +301,7 @@ const BookModalCreate = (props) => {
                 />
               </Form.Item>
             </Col>
-            <Col span={12}>
+            <Col xs={24} md={12}>
               <Form.Item
                 labelCol={{ span: 24 }}
                 label="Ảnh Thumbnail"
@@ -312,7 +326,7 @@ const BookModalCreate = (props) => {
                 </Upload>
               </Form.Item>
             </Col>
-            <Col span={12}>
+            <Col xs={24} md={12}>
               <Form.Item
                 labelCol={{ span: 24 }}
                 label="Ảnh Slider"
