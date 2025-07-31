@@ -242,10 +242,15 @@ const BookTable = () => {
       </div>
 
       <div className="button">
-        <Button type="primary" onClick={() => fetchBooks()}>
+        <Button
+          className="button-action"
+          type="primary"
+          onClick={() => fetchBooks()}
+        >
           Tìm kiếm
         </Button>
         <Button
+          className="button-action"
           onClick={() => {
             setFilters({ title: "", author: "" });
             setCurrent(1);

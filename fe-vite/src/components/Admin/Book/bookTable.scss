@@ -20,6 +20,30 @@
     }
   }
 }
+
+.button {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 30px;
+  gap: 20px;
+
+  .button-action {
+    width: 100px;
+    height: 40px;
+  }
+}
+.button {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 30px;
+  gap: 20px;
+
+  .button-action {
+    width: 100px;
+    height: 40px;
+  }
+}
+
 .header-table-container {
   display: flex;
   justify-content: space-between;
