@@ -1,6 +1,6 @@
 # 📚 Mini Book-store Management
 
-A full-stack **book store management application** built using the MERN stack (MongoDB, Express, React, Next.js). This project simulates a real-world e-commerce platform with essential features such as book browsing, shopping cart, user authentication, order placement, and an admin dashboard.
+A full-stack **book store management application** built using the MERN stack (MongoDB, Express, React, Nest.js). This project simulates a real-world e-commerce platform with essential features such as book browsing, shopping cart, user authentication, order placement, and an admin dashboard.
 
 > 🛠️ **Frontend was fully built during hands-on practice in an online course.** Backend logic is adapted from an open-source learning project on YouTube.
 
