@@ -1,6 +1,7 @@
 import { Button, Drawer, Badge, Descriptions } from "antd";
 import moment from "moment";
 import { FORMAT_DATE_DISPLAY } from "../../../utils/constant";
+import { useEffect, useState } from "react";
 
 const UserViewDetail = (props) => {
   const {
@@ -9,6 +10,19 @@ const UserViewDetail = (props) => {
     dataViewDetail,
     setDataViewDetail,
   } = props;
+
+  const [drawerWidth, setDrawerWidth] = useState("50vw");
+
+  useEffect(() => {
+    const handleResize = () => {
+      const isMobile = window.innerWidth < 1300;
+      setDrawerWidth(isMobile ? "100vw" : "50vw");
+    };
+
+    handleResize(); // chạy lần đầu
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const onClose = () => {
     setOpenViewDetail(false);
@@ -19,11 +33,11 @@ const UserViewDetail = (props) => {
     <>
       <Drawer
         title="Chi tiết người dùng"
-        width={"50vw"}
+        width={drawerWidth}
         onClose={onClose}
         open={openViewDetail}
       >
-        <Descriptions title="Thông tin user" bordered column={2}>
+        <Descriptions title="Thông tin user" bordered column={1}>
           <Descriptions.Item label="Id">
             {dataViewDetail?._id}
           </Descriptions.Item>

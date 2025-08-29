@@ -81,10 +81,12 @@ const Header = () => {
     {
       key: "1",
       label: <span>Quản lý tài khoản</span>,
+      disabled: true,
     },
     {
       key: "2",
       label: <span>Lịch sử mua hàng</span>,
+      disabled: true,
     },
 
     {

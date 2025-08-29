@@ -122,6 +122,7 @@ const LayoutAdmin = () => {
     {
       key: "1",
       label: <span>Quản lý tài khoản</span>,
+      disabled: true,
     },
     {
       key: "homepage",
