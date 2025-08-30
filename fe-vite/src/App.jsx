@@ -30,6 +30,7 @@ import BookTable from "./components/Admin/Book/BookTable";
 import OrderTable from "./components/Admin/Order/OrderTable";
 import DashboardAdmin from "./components/Admin/DashboardAdmin";
 import "bootstrap/dist/css/bootstrap.min.css";
+import UserInfo from "./components/UserInfo/UserInfo";
 
 const Layout = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -91,6 +92,10 @@ export default function App() {
         {
           path: "history",
           element: <OrderHistory />,
+        },
+        {
+          path: "user-info",
+          element: <UserInfo />,
         },
       ],
     },

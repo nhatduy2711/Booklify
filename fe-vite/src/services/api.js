@@ -139,6 +139,17 @@ const callUpdateBook = (
   });
 };
 
+const callUpdateInfoUser = (_id, fullName, phone, avatar) => {
+  const data = new URLSearchParams();
+  if (_id !== undefined) data.append("_id", _id);
+  if (fullName !== undefined) data.append("fullName", fullName);
+  if (phone !== undefined) data.append("phone", phone);
+  if (avatar !== undefined) data.append("avatar", avatar); // nếu có dùng
+
+  return axios.put("api/v1/user", data, {
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+  });
+};
 export {
   callRegister,
   callLogin,
@@ -159,4 +170,5 @@ export {
   callFetchCategory,
   callDeleteBook,
   callUpdateBook,
+  callUpdateInfoUser,
 };

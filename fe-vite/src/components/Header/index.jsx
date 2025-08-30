@@ -80,8 +80,7 @@ const Header = ({ searchTerm, setSearchTerm }) => {
   let items = [
     {
       key: "1",
-      label: <span>Quản lý tài khoản</span>,
-      disabled: true,
+      label: <Link to="/user-info">Quản lý tài khoản</Link>,
     },
     {
       key: "2",
