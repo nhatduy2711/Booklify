@@ -85,8 +85,7 @@ const Header = ({ searchTerm, setSearchTerm }) => {
     },
     {
       key: "2",
-      label: <span>Lịch sử mua hàng</span>,
-      disabled: true,
+      label: <Link to="/history">Lịch sử mua hàng</Link>,
     },
 
     {
@@ -165,7 +164,11 @@ const Header = ({ searchTerm, setSearchTerm }) => {
           <div className="header__logo-icon">
             <FaReact />
           </div>
-          <span className="header__logo-text" onClick={() => navigate("/")}>
+          <span
+            className="header__logo-text"
+            style={{ cursor: "pointer" }}
+            onClick={() => navigate("/")}
+          >
             BOOKLIFY
           </span>
         </div>
