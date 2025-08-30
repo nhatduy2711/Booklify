@@ -54,7 +54,7 @@ export const useCanHover = () => {
   return canHover;
 };
 
-const Header = () => {
+const Header = ({ searchTerm, setSearchTerm }) => {
   const canHover = useCanHover();
 
   const dispatch = useDispatch();
@@ -176,6 +176,8 @@ const Header = () => {
             type="text"
             className="header-search__input"
             placeholder="Hôm nay bạn tìm gì?"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
 

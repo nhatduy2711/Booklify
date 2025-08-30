@@ -32,10 +32,11 @@ import DashboardAdmin from "./components/Admin/DashboardAdmin";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const Layout = () => {
+  const [searchTerm, setSearchTerm] = useState("");
   return (
     <div className="layout-app">
-      <Header />
-      <Outlet />
+      <Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+      <Outlet context={[searchTerm, setSearchTerm]} />
       <Footer />
     </div>
   );

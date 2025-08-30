@@ -17,6 +17,7 @@ import "./homepage.scss";
 import { callGetCategories, callGetListBook } from "../../services/api";
 
 const Home = () => {
+  const [searchTerm, setSearchTerm] = useOutletContext();
   const navigate = useNavigate();
   const [listCategory, setListCategory] = useState([]);
 
@@ -44,7 +45,7 @@ const Home = () => {
 
   useEffect(() => {
     fetchBook();
-  }, [current, pageSize, filters]);
+  }, [current, pageSize, filters, searchTerm]);
 
   const handleViewDetail = (book) => {
     const slug = convertSlug(book.mainText);
@@ -135,6 +136,10 @@ const Home = () => {
 
     if (maxPrice) {
       query += `&price<=${maxPrice}`;
+    }
+
+    if (searchTerm) {
+      query += `&mainText=/${searchTerm}/i`;
     }
 
     const res = await callGetListBook(query);
